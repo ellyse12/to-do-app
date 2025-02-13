@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="min-h-screen bg-gray-100">
     <h1
-      class="text-cyan-700 text-center text-6xl font-semibold bg-emerald-500 py-4 shadow-md"
+      class="text-yellow-50 text-center text-6xl font-semibold bg-emerald-500 py-4 shadow-md"
     >
       To-do List
     </h1>

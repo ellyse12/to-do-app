@@ -26,15 +26,15 @@
       <div class="flex space-x-2">
         <button
           @click="toggleEditTodo"
-          class="px-3 py-1 text-sm bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+          class="px-3 py-1 text-sm flex justify-center bg-teal-500 text-white rounded-md hover:bg-cyan-600 transition min-w-12"
         >
-          Edit
+          <img src="../assets/pencil.svg" alt="" class="h-4 w-4" />
         </button>
         <button
           @click="removeTodo"
-          class="px-3 py-1 text-sm bg-red-500 text-white rounded-md hover:bg-red-600 transition"
+          class="px-3 py-1 text-sm flex justify-center bg-indigo-400 text-white rounded-md hover:bg-red-400 transition min-w-12"
         >
-          Remove
+          <img src="../assets/trash-can.svg" alt="" class="h-4 w-4" />
         </button>
       </div>
     </div>
