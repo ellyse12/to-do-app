@@ -1,23 +1,37 @@
 <template>
-  <div id="app">
+  <div id="app" class="min-h-screen bg-gray-100">
     <h1
-      class="text-cyan-700 text-center text-6xl font-semibold bg-emerald-500 py-4"
+      class="text-cyan-700 text-center text-6xl font-semibold bg-emerald-500 py-4 shadow-md"
     >
       To-do List
     </h1>
-    <p class="py-4 text-center">
-      Completed To-do's : {{ completedTodos }} / {{ todoList.length }}
-    </p>
-    <TodoForm @onNewTodo="handleNewTodo" />
-    <TodoListItem
-      v-for="todo in todoList"
-      :key="todo.id"
-      :todo="todo"
-      @onToggleIsChecked="handleToggleIsChecked"
-      @onToggleEditTodo="handleToggleEditTodo"
-      @onUpdateTodo="handleUpdateTodo"
-      @onRemoveTodo="handleRemoveTodo"
-    />
+    <div class="container mx-auto px-4 py-8">
+      <p class="text-xl font-medium text-gray-700 text-center mb-8">
+        Completed To-do's:
+        <span class="text-emerald-600"
+          >{{ completedTodos }} / {{ todoList.length }}</span
+        >
+      </p>
+
+      <div class="max-w-2xl mx-auto mb-8">
+        <TodoForm @onNewTodo="handleNewTodo" />
+      </div>
+
+      <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Your Tasks</h2>
+        <div class="space-y-3">
+          <TodoListItem
+            v-for="todo in todoList"
+            :key="todo.id"
+            :todo="todo"
+            @onToggleIsChecked="handleToggleIsChecked"
+            @onToggleEditTodo="handleToggleEditTodo"
+            @onUpdateTodo="handleUpdateTodo"
+            @onRemoveTodo="handleRemoveTodo"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

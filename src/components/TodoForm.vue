@@ -1,10 +1,32 @@
 <template>
-  <form @submit.prevent="submit">
-    <input required placeholder="title" v-model="title" class="bg-slate-900" />
-    <input required placeholder="description" v-model="description" />
+  <div class="bg-white rounded-lg shadow-md p-6">
+    <form @submit.prevent="submit" class="space-y-4">
+      <div>
+        <input
+          required
+          placeholder="Task Title"
+          v-model="title"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
+        />
+      </div>
 
-    <button type="submit">{{ isEditMode ? "Save" : "Add" }}</button>
-  </form>
+      <div>
+        <input
+          required
+          placeholder="Task Description"
+          v-model="description"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-emerald-500 text-white py-2 px-4 rounded-lg hover:bg-emerald-600 transition duration-200 font-medium"
+      >
+        {{ isEditMode ? "Save Changes" : "Add Task" }}
+      </button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -25,7 +47,7 @@ export default {
       this.emitNewTodo();
     },
     emitUpdateTodo() {
-      alert("he");
+      alert("Changes done!");
       this.$emit("onUpdateTodo", {
         title: this.title,
         description: this.description,

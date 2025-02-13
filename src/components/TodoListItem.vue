@@ -1,19 +1,49 @@
 <template>
-  <div>
-    <div v-if="!editMode">
-      <input type="checkbox" v-model="isChecked" />
-      <span>
-        <strong>{{ todo.title }}</strong>
-      </span>
-      <span>
-        {{ todo.description }}
-      </span>
+  <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+    <div v-if="!editMode" class="flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <input
+          type="checkbox"
+          v-model="isChecked"
+          class="w-5 h-5 text-emerald-500 rounded border-gray-300 focus:ring-emerald-500"
+        />
+        <div class="flex flex-col">
+          <strong
+            :class="{ 'line-through text-gray-500': isChecked }"
+            class="text-gray-800"
+          >
+            {{ todo.title }}
+          </strong>
+          <span
+            :class="{ 'line-through text-gray-400': isChecked }"
+            class="text-gray-600 text-sm"
+          >
+            {{ todo.description }}
+          </span>
+        </div>
+      </div>
 
-      <button @click="toggleEditTodo">Edit</button>
-      <button @click="removeTodo">Remove</button>
+      <div class="flex space-x-2">
+        <button
+          @click="toggleEditTodo"
+          class="px-3 py-1 text-sm bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+        >
+          Edit
+        </button>
+        <button
+          @click="removeTodo"
+          class="px-3 py-1 text-sm bg-red-500 text-white rounded-md hover:bg-red-600 transition"
+        >
+          Remove
+        </button>
+      </div>
     </div>
     <div v-else>
-      <TodoForm @onUpdateTodo="handleUpdateTodo" :todo="todo" isEditMode />
+      <TodoForm
+        @onUpdateTodo="handleUpdateTodo"
+        :todo="todo"
+        :isEditMode="true"
+      />
     </div>
   </div>
 </template>
