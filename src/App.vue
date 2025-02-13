@@ -1,11 +1,27 @@
 <template>
-  <div id="app" class="min-h-screen bg-gray-100">
+  <div id="app" class="min-h-screen bg-gray-100 relative">
+    <div class="fixed left-0 top-40 h-full w-64 pointer-events-none">
+      <img
+        src="@/assets/leaf-right.svg"
+        alt="Left flower"
+        class="h-full object-contain opacity-30"
+      />
+    </div>
+
+    <div class="fixed right-0 -top-12 h-full w-64 pointer-events-none">
+      <img
+        src="@/assets/leaf-left.svg"
+        alt="Right flower"
+        class="h-full object-contain opacity-30"
+      />
+    </div>
+
     <h1
-      class="text-yellow-50 text-center text-6xl font-semibold bg-emerald-500 py-4 shadow-md"
+      class="text-yellow-50 text-center text-6xl font-semibold bg-emerald-500 py-4 shadow-md relative z-10"
     >
       To-do List
     </h1>
-    <div class="container mx-auto px-4 py-8">
+    <div class="container mx-auto px-4 py-8 relative z-10">
       <p class="text-xl font-medium text-gray-700 text-center mb-8">
         Completed To-do's:
         <span class="text-emerald-600"
@@ -98,4 +114,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.pointer-events-none {
+  pointer-events: none;
+}
+</style>
