@@ -55,13 +55,12 @@ export default {
   methods: {
     handleNewTodo(newTodo) {
       this.todoList.push(newTodo);
-      console.log(this.todoList);
+      this.saveTodosToLocalStorage();
     },
     handleToggleIsChecked({ value, id }) {
       const todo = this.findTodo(id);
       todo.isChecked = value;
-
-      console.log(this.todoList);
+      this.saveTodosToLocalStorage();
     },
     findTodo(id) {
       return this.todoList.find((todo) => todo.id === id);
@@ -77,10 +76,24 @@ export default {
         }
         return todo;
       });
+      this.saveTodosToLocalStorage();
     },
     handleRemoveTodo(id) {
       this.todoList = this.todoList.filter((todo) => todo.id !== id);
+      this.saveTodosToLocalStorage();
     },
+    saveTodosToLocalStorage() {
+      localStorage.setItem("todos", JSON.stringify(this.todoList));
+    },
+    loadTodosFromLocalStorage() {
+      const savedTodos = localStorage.getItem("todos");
+      if (savedTodos) {
+        this.todoList = JSON.parse(savedTodos);
+      }
+    },
+  },
+  created() {
+    this.loadTodosFromLocalStorage();
   },
 };
 </script>
